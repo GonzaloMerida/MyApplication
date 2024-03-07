@@ -12,3 +12,6 @@ data class game (
 
 ){
 }
+data class Cover(
+
+)

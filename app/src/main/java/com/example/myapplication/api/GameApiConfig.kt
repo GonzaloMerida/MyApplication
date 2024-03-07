@@ -20,8 +20,11 @@ class GameApiConfig {
 
         const val CLIENT_ID = "bsojm7ecysxbgd14e88qa1j0u12o3c"
 
-        const val TOKEN = "cklidd8u6w4byj4govr413gjaxfz5y"
+        const val CLIENT_SECRET = "yszzlwhzij0h2dy22l9m9aey7f8cca"
 
+        val token = TwitchAuthenticator.requestTwitchToken(CLIENT_ID, CLIENT_SECRET)
+
+        //mpx3d9dau6xr4ao8ik1bnagbsbdwt9
 
         //Definición de la api de Retrofit2.
         fun provideRetrofit(): Retrofit {
@@ -37,7 +40,7 @@ class GameApiConfig {
             val headers = Interceptor { chain ->
                 val request: Request = chain.request().newBuilder()
                     .addHeader("Client-ID", CLIENT_ID)
-                    .addHeader("Authorization", TOKEN)
+                    .addHeader("Authorization", token.toString())
                     .build()
                 chain.proceed(request)
             }
